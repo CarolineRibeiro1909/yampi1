@@ -5,7 +5,7 @@ import DashboardLayout from '../layout/DashboardLayout.vue'
 // Admin pages
 import Products from 'src/pages/Products.vue'
 import ProductDetails from 'src/pages/ProductDetails.vue'
-
+import CardCartProducts from 'src/pages/UserProfile/CardCartProducts.vue'
 
 const routes = [
   {
@@ -27,6 +27,11 @@ const routes = [
         path: 'product-details',
         name: 'Product Details',
         component: ProductDetails
+      },
+      {
+        path: 'cart',
+        name: 'Cart',
+        component: CardCartProducts
       },
     ]
   },

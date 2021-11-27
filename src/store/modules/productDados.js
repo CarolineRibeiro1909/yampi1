@@ -40,7 +40,7 @@ export default {
         },
 	},
 	actions: {
-		resetProdutoDados({ commit }) {
+		resetProductDados({ commit }) {
 			commit('resetState')
 		},
 	}

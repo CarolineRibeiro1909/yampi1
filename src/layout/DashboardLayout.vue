@@ -3,7 +3,7 @@
     <side-bar>
       <mobile-menu slot="content"></mobile-menu>
       <sidebar-link to="/main/products">
-        <i class="nc-icon nc-chart-pie-35"></i>
+       <i class="fa fa-cubes" aria-hidden="true"></i>
         <p>Produtos</p>
       </sidebar-link>
     </side-bar>
