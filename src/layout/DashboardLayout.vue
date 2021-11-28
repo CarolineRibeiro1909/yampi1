@@ -4,36 +4,37 @@
 	<side-bar
 		:title="loja"
 	>
-  <mobile-menu slot="content"></mobile-menu>
+  	<mobile-menu slot="content"></mobile-menu>
 
-	  <template slot-scope="props" slot="links">
+	<template slot-scope="props" slot="links">
 
-
-		<!-- HOME  -->
-
-		
-
-    <template>
-			<sidebar-item :link="{name: 'Dashboard', path: '/main/products', icon: 'fa fa-area-chart'}"></sidebar-item>
+		<template>
+			<sidebar-item :link="{name: 'Dashboard', path: '/main/products', icon: 'fa fa-cubes'}"></sidebar-item>
 		</template>
 
-    <template>
-		<sidebar-item :link="{name: 'Categorias', icon: 'fa fa-snowflake-o'}">
+		<template>
+			<sidebar-item :link="{name: 'Categorias', icon: 'fa fa-snowflake-o'}">
+				<sidebar-item :link="{name: 'Eletrônicos', path: '/main/electronics-categories', icon: 'fa fa-desktop'}"></sidebar-item>
+				<sidebar-item :link="{name: 'Homens', path: '/main/man-categories', icon: 'fa fa-male'}"></sidebar-item>
 				<sidebar-item :link="{name: 'Joias', path: '/main/jewelery-categories', icon: 'fa fa-diamond'}"></sidebar-item>
+				<sidebar-item :link="{name: 'Mulheres', path: '/main/woman-categories', icon: 'fa fa-female'}"></sidebar-item>
 			</sidebar-item>
 		</template>
 
-	
-	  </template>
+		<template>
+			<sidebar-item :link="{name: 'Carrinho', path: '/main/cart', icon: 'fa fa-shopping-cart'}"></sidebar-item>
+		</template>
+
+	</template>
 	</side-bar>
-  <div class="main-panel">
-      <top-navbar></top-navbar>
+  	<div class="main-panel">
+		<top-navbar></top-navbar>
 
-      <dashboard-content @click="toggleSidebar">
+		<dashboard-content @click="toggleSidebar">
 
-      </dashboard-content>
+		</dashboard-content>
 
-      <content-footer></content-footer>
+		<content-footer></content-footer>
     </div>
   </div>
 </template>
@@ -54,8 +55,6 @@ function initScrollbar(className) {
 	}, 100);
   }
 }
-
-
   import TopNavbar from './TopNavbar.vue'
   import ContentFooter from './ContentFooter.vue'
   import DashboardContent from './Content.vue'
@@ -63,13 +62,12 @@ function initScrollbar(className) {
 
 export default {
 	mixins: [
-	
   	],
 	components: {
-    TopNavbar,
-    ContentFooter,
-    DashboardContent,
-    MobileMenu
+		TopNavbar,
+		ContentFooter,
+		DashboardContent,
+		MobileMenu
   },
 	data() {
 		return {
@@ -77,7 +75,7 @@ export default {
 		}
 	},
 	computed: {
-	
+
 	},
 	methods: {
 		toggleSidebar() {
@@ -85,9 +83,6 @@ export default {
 				this.$sidebar.displaySidebar(false);
 			}
 		},
-		
-
-		
 	},
 	mounted() {
 	}

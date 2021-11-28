@@ -7,8 +7,8 @@
             <img :src="image" width=200 height=200/>
           </div>
           <div class="col-md-6 ml-2">
-            <label>{{'descrição do produto'}}</label>
-            <h4>{{description}}</h4>
+            <label>{{ 'descrição do produto' }}</label>
+            <h4>{{ description }}</h4>
           </div>
         </div>
       </div>
@@ -108,6 +108,13 @@ export default {
 				let objData = {'id': this.id, 'image': this.image, 'price': this.price, 'title': this.title, 'qtde': this.quantity,'total': (Number(this.quantity) * Number(this.price)).toFixed(2)};
 				this.$store.commit('cartDados/pushListCarts', objData);
 				this.$router.push({ path: 'cart'});
+			} else {
+				this.$toasted.show("Produto já inserido no carrinho", { 
+					type:"error",
+					theme: "outline", 
+					position: "bottom-center", 
+					duration : 5000
+				});
 			}
 		}
 	},

@@ -16,10 +16,14 @@
   export default {
     components: {
       CardProductDetails,
-      
-    }
+    },
+    methods: {
+	  },
+    beforeRouteLeave(to, from, next) {
+      this.$store.dispatch('productDados/resetFormProduct');
+      next();
+  	}
   }
-
 </script>
 <style>
 

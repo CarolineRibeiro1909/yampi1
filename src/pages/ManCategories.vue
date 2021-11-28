@@ -37,7 +37,7 @@ export default {
 	methods: {
 	},
 	mounted() {
-    	this.getAllJeweleryCategories();
+    	this.getAllManCategories();
 	},
 	watch: {
 		'selected': function(newValue, oldValue) {

@@ -11,6 +11,20 @@ export default {
   	],
 	data() {
 		return {
+			listSelect: [
+				{
+					'id': 1,
+					'name': 'Nome'
+				},
+				{
+					'id': 2,
+					'name': 'Preço'
+				},
+				{
+					'id': 3,
+					'name': 'Avaliação do Produto'
+				},
+			]
 		}
 	},
 	mounted() {},
@@ -37,6 +51,24 @@ export default {
 		getAllJeweleryCategories() {
 			this.setListProducts();
 			serviceCategorie.getJeweleryCategorie().then(response => {
+				this.$store.commit('productDados/setListProducts', response);
+			})
+		},
+		getAllElectronicsCategories() {
+			this.setListProducts();
+			serviceCategorie.getElectronicsCategorie().then(response => {
+				this.$store.commit('productDados/setListProducts', response);
+			})
+		},
+		getAllManCategories() {
+			this.setListProducts();
+			serviceCategorie.getManCategorie().then(response => {
+				this.$store.commit('productDados/setListProducts', response);
+			})
+		},
+		getAllWomanCategories() {
+			this.setListProducts();
+			serviceCategorie.getWomanCategorie().then(response => {
 				this.$store.commit('productDados/setListProducts', response);
 			})
 		},

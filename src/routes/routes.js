@@ -7,6 +7,9 @@ import Products from 'src/pages/Products.vue';
 import ProductDetails from 'src/pages/ProductDetails.vue';
 import Cart from 'src/pages/Cart.vue';
 import JeweleryCategories from 'src/pages/JeweleryCategories.vue';
+import ElectronicsCategories from 'src/pages/ElectronicsCategories.vue';
+import WomanCategories from 'src/pages/WomanCategories.vue';
+import ManCategories from 'src/pages/ManCategories.vue';
 
 const routes = [
   {
@@ -35,9 +38,24 @@ const routes = [
         component: Cart
       },
       {
+        path: 'electronics-categories',
+        name: 'Eletrônicos',
+        component: ElectronicsCategories
+      },
+      {
+        path: 'man-categories',
+        name: 'Homens',
+        component: ManCategories
+      },
+      {
         path: 'jewelery-categories',
         name: 'JOIAS',
         component: JeweleryCategories
+      },
+      {
+        path: 'woman-categories',
+        name: 'Mulheres',
+        component: WomanCategories
       },
     ]
   },

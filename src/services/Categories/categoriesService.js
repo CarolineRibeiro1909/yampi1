@@ -9,4 +9,19 @@ export class categoriesService {
 		return axios.get(url)
 					.then(response => response.data)
 	}
+	getElectronicsCategorie() {
+		const url = `https://fakestoreapi.com/products/category/electronics`
+		return axios.get(url)
+					.then(response => response.data)
+	}
+	getManCategorie() {
+		const url = `https://fakestoreapi.com/products/category/men's clothing`
+		return axios.get(url)
+					.then(response => response.data)
+	}
+	getWomanCategorie() {
+		const url = `https://fakestoreapi.com/products/category/women's clothing`
+		return axios.get(url)
+					.then(response => response.data)
+	}
 }

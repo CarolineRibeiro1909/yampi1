@@ -9,13 +9,13 @@
             </div>
             <div slot="content">
               <p class="card-category">{{item.title}}</p>
-			  <h5 class="card-category mt-1"><b>{{'nota'}} {{ item.rating.rate }}</b></h5>
+			  <h5 class="card-category mt-1"><b>{{ 'nota' }} {{ item.rating.rate }}</b></h5>
 			  <h5 class="card-category mt-1"><b>R$ {{ item.price }}</b></h5>
             </div>
             <div slot="footer">
                 <div class="row justify-content-end mt-3">
-                    <div class="col-md-12 ml-5 mr-5">
-                        <button @click="details(item)"  style="width: 250px; height: 50px" class="btn btn-info btn-fill float-right"><i class="fa fa-search" aria-hidden="true"></i>{{'Detalhes'}}</button>
+                    <div class="col-md-12">
+                        <button @click="details(item)"  style="width: 250px; height: 50px" class="btn btn-info btn-fill float-right">{{ 'Detalhes' }}</button>
                     </div>
                 </div>          
             </div>
@@ -52,8 +52,8 @@ export default {
 	},
 	methods: {
 		details(item) {
-		this.$router.push({ path: 'product-details'});
-		this.setFormProduct(item);
+			this.$router.push({ path: 'product-details'});
+			this.setFormProduct(item);
 		},
 	},
 	mounted() {

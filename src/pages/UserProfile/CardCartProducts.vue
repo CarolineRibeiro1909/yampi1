@@ -44,28 +44,30 @@
 		</div>	
 		<div class="row justify-content-end" v-show="listCarts.length > 0">
 			<div class="col-md-4">
-				<button type="primary" round icon class="btn btn-success btn-fill mt-5" style="width: 300px; height: 50px">{{'Finalizar Pedido'}}</button>
+				<button type="primary" round icon class="btn btn-success btn-fill mt-5" style="width: 300px; height: 50px" @click="completedOrder()">{{ 'Finalizar Pedido' }}</button>
 			</div>
 		</div>
 
 		<div v-if="listCarts.length === 0">
-			<label>{{ 'Carrinho vazio' }}</label>
+			<notification :title="cartTitle" :type="'info'"></notification>
 		</div>
-		
 	</div>
   </card>
 </template>
 <script>
 import Card from 'src/components/Cards/Card.vue'
+import Notification from 'src/components/NotificationPlugin/Notification.vue';
 
 export default {
 	mixins: [
 	],
 	components: {
-    	Card
+    	Card,
+Notification
 	},
 	data() {
 		return {
+			cartTitle: 'Carrinho Vazio!',
 			total: null,
 		};
 	},
@@ -91,18 +93,33 @@ export default {
 			this.total = array.reduce((prevVal, elem) => {
 				return prevVal + Number(elem.total);
 			}, 0);
+			this.total.toFixed(2);
 		},
 		updatePrice(indexCart, qtde, price) {
 			let lista = this.$store.state.cartDados.listCarts;
 
 			lista[indexCart].qtde = qtde; // altera o valor da quantidade
 
-			lista[indexCart].total = (Number(qtde) * Number(price).toFixed(2));  // altera o valor do preço
+			let total = Number((qtde) * (price));
+
+			lista[indexCart].total = total.toFixed(2);  // altera o valor do preço
 
 			this.$store.commit('cartDados/setListCarts', lista);
 
 			this.totalCart(lista);
 		},
+		resetListCarts() {
+			this.$store.dispatch('cartDados/resetListCarts');
+		},
+		completedOrder() {
+			this.$toasted.show("Pedido Enviado com Sucesso !!", { 
+				type:"success",
+				theme: "outline", 
+				position: "bottom-center", 
+				duration : 5000
+			});
+			this.resetListCarts();
+		}
 	},
 	mounted() {
 		this.totalCart(this.listCarts);

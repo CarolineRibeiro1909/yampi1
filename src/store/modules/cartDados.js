@@ -26,5 +26,8 @@ export default {
 		resetCartDados({ commit }) {
 			commit('resetState')
 		},
+		resetListCarts({ commit }) {
+			commit('resetAllListCarts')
+		},
 	}
 }

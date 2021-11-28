@@ -22,11 +22,7 @@ export default {
 		},
 		resetDictParamsFormProductState(state) {
 			Object.keys(state.formProduct).forEach(key => {
-				if (key === 'ativo') {
-					state.formProduct[key] = true
-				} else {
-					state.formProduct[key] = null
-				}
+				state.formProduct[key] = null
 			});
 		},
 		resetAllListProducts(state) {
@@ -42,6 +38,9 @@ export default {
 	actions: {
 		resetProductDados({ commit }) {
 			commit('resetState')
+		},
+		resetFormProduct({ commit }) {
+			commit('resetDictParamsFormProductState')
 		},
 	}
 }
