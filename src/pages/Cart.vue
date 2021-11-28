@@ -1,13 +1,7 @@
 <template>
-  <div class="content">
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-md-8">
-          <card-cart-products>
-          </card-cart-products>
-        </div>
-      </div>
-    </div>
+  <div>
+    <card-cart-products>
+    </card-cart-products>
   </div>
 </template>
 <script>
@@ -16,7 +10,6 @@
   export default {
     components: {
       CardCartProducts,
-      UserCard
     }
   }
 

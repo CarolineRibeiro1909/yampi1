@@ -3,9 +3,10 @@ import DashboardLayout from '../layout/DashboardLayout.vue'
 //import NotFound from '../pages/NotFoundPage.vue'
 
 // Admin pages
-import Products from 'src/pages/Products.vue'
-import ProductDetails from 'src/pages/ProductDetails.vue'
-import CardCartProducts from 'src/pages/UserProfile/CardCartProducts.vue'
+import Products from 'src/pages/Products.vue';
+import ProductDetails from 'src/pages/ProductDetails.vue';
+import Cart from 'src/pages/Cart.vue';
+import JeweleryCategories from 'src/pages/JeweleryCategories.vue';
 
 const routes = [
   {
@@ -31,7 +32,12 @@ const routes = [
       {
         path: 'cart',
         name: 'Cart',
-        component: CardCartProducts
+        component: Cart
+      },
+      {
+        path: 'jewelery-categories',
+        name: 'JOIAS',
+        component: JeweleryCategories
       },
     ]
   },
