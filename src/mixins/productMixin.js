@@ -47,6 +47,7 @@ export default {
 			this.setStoreValueByCommitFormProduct('description', objData.description);
 			this.setStoreValueByCommitFormProduct('image', objData.image);
 			this.setStoreValueByCommitFormProduct('price', objData.price);
+			this.setStoreValueByCommitFormProduct('quantity', 1);
 		},
 		getAllJeweleryCategories() {
 			this.setListProducts();
@@ -70,6 +71,16 @@ export default {
 			this.setListProducts();
 			serviceCategorie.getWomanCategorie().then(response => {
 				this.$store.commit('productDados/setListProducts', response);
+			})
+		},
+		getProduct(search) {
+			serviceProduct.getAllProducts().then(response => {
+				let responseFind = response.find(elem => elem.title.trim() === search.trim());
+				console.log(responseFind);
+				if (responseFind) {
+					this.setFormProduct(responseFind);
+					this.$router.push({ path: 'detalhes-produto'});
+				}
 			})
 		},
 		orderBySelectItem(array, value) {

@@ -27,11 +27,11 @@
 </template>
 <script>
 import StatsCard from 'src/components/Cards/StatsCard.vue'
-import ProdutoMixin from '@/mixins/produtoMixin';
+import ProductMixin from '@/mixins/productMixin';
 
 export default {
 	mixins: [
-		ProdutoMixin,
+		ProductMixin,
 	],
 	components: {
         StatsCard
@@ -41,7 +41,7 @@ export default {
 	    };
 	},
 	computed: {
-    listProducts: {
+		listProducts: {
 			get() {
 				return this.$store.state.productDados.listProducts;
 			},
@@ -52,7 +52,7 @@ export default {
 	},
 	methods: {
 		details(item) {
-			this.$router.push({ path: 'product-details'});
+			this.$router.push({ path: 'detalhes-produto'});
 			this.setFormProduct(item);
 		},
 	},

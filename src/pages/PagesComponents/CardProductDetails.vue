@@ -34,14 +34,14 @@
 </template>
 <script>
 import Card from 'src/components/Cards/Card.vue'
-import ProdutoMixin from '@/mixins/produtoMixin';
+import ProductMixin from '@/mixins/productMixin';
 
 export default {
 	mixins: [
-		ProdutoMixin,
+		ProductMixin,
 	],
 	components: {
-    	Card
+		Card
 	},
 	data() {
 		return {
@@ -107,7 +107,7 @@ export default {
 			if (listEqual.length <= 0) {
 				let objData = {'id': this.id, 'image': this.image, 'price': this.price, 'title': this.title, 'qtde': this.quantity,'total': (Number(this.quantity) * Number(this.price)).toFixed(2)};
 				this.$store.commit('cartDados/pushListCarts', objData);
-				this.$router.push({ path: 'cart'});
+				this.$router.push({ path: 'carrinho'});
 			} else {
 				this.$toasted.show("Produto já inserido no carrinho", { 
 					type:"error",

@@ -1,7 +1,8 @@
 <template>
   <card>
+	<h4 slot="header" class="card-title" v-show="listCarts.length > 0">{{ 'Meu Carrinho' }}</h4>
     <div class="card-collapse-scroll" ref="divScroll">
-		<div class="row justify-content-md-center align-items-center mt-4"
+		<div class="row justify-content-md-center align-items-center mt-3"
 			v-for="(lineCart, indexCart) in listCarts"
 			:key="`cart-${ indexCart }`"
 		>
@@ -34,20 +35,21 @@
 				</button>
 			</div>
 		</div>
-		<div class="row justify-content-end" v-show="listCarts.length > 0">
-			<div class="col-md-1 mr-3 ml-3" style="color:black">
-				<h5>{{ 'Total' }}</h5>
-			</div>
-			<div class="col-md-3 mr-0 ml-2" style="color:blue">
-				<h5>R$ {{ total }}</h5>
-			</div>
-		</div>	
-		<div class="row justify-content-end" v-show="listCarts.length > 0">
-			<div class="col-md-4">
-				<button type="primary" round icon class="btn btn-success btn-fill mt-5" style="width: 300px; height: 50px" @click="completedOrder()">{{ 'Finalizar Pedido' }}</button>
+		<div v-show="listCarts.length > 0">
+			<div class="row justify-content-end" >
+				<div class="col-md-1 mr-3 ml-3" style="color:black">
+					<h5>{{ 'Total' }}</h5>
+				</div>
+				<div class="col-md-3 mr-0 ml-2" style="color:blue">
+					<h5>R$ {{ total }}</h5>
+				</div>
+			</div>	
+			<div class="row justify-content-end">
+				<div class="col-md-4">
+					<button type="primary" round icon class="btn btn-success btn-fill mt-5" style="width: 300px; height: 50px" @click="completedOrder()">{{ 'Finalizar Pedido' }}</button>
+				</div>
 			</div>
 		</div>
-
 		<div v-if="listCarts.length === 0">
 			<notification :title="cartTitle" :type="'info'"></notification>
 		</div>
@@ -63,7 +65,7 @@ export default {
 	],
 	components: {
     	Card,
-Notification
+		Notification
 	},
 	data() {
 		return {
@@ -93,7 +95,7 @@ Notification
 			this.total = array.reduce((prevVal, elem) => {
 				return prevVal + Number(elem.total);
 			}, 0);
-			this.total.toFixed(2);
+			parseFloat(this.total.toFixed(2));
 		},
 		updatePrice(indexCart, qtde, price) {
 			let lista = this.$store.state.cartDados.listCarts;
@@ -102,7 +104,7 @@ Notification
 
 			let total = Number((qtde) * (price));
 
-			lista[indexCart].total = total.toFixed(2);  // altera o valor do preço
+			lista[indexCart].total = parseFloat(total.toFixed(2));  // altera o valor do preço
 
 			this.$store.commit('cartDados/setListCarts', lista);
 

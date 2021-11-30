@@ -1,7 +1,7 @@
 <template>
   <nav class="navbar navbar-expand-lg">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#/main/products">Dashboard</a>
+      <a class="navbar-brand mr-5" href="#/principal/produtos">Todos Produtos</a>
        <button type="button"
               class="navbar-toggler navbar-toggler-right"
               :class="{toggled: $sidebar.showSidebar}"
@@ -13,20 +13,26 @@
         <span class="navbar-toggler-bar burger-lines"></span>
         <span class="navbar-toggler-bar burger-lines"></span>
       </button>
+
+      <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" v-model="productSearch" type="search" placeholder="Insira o título do produto" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" @click="search()" type="submit">{{'Pesquisar'}}</button>
+      </form>
+    
       <div class="collapse navbar-collapse justify-content-end">
         <ul class="navbar-nav ml-auto">
           <base-dropdown title="Categorias">
-            <a class="dropdown-item" href="#/main/electronics-categories">Eletrônicos</a>
-            <a class="dropdown-item" href="#/main/man-categories">Homens</a>
-            <a class="dropdown-item" href="#/main/jewelery-categories">Joias</a>
-            <a class="dropdown-item" href="#/main/woman-categories">Mulheres</a>
+            <a class="dropdown-item" href="#/principal/categoria-eletronicos">Eletrônicos</a>
+            <a class="dropdown-item" href="#/principal/categoria-masculino">Masculino</a>
+            <a class="dropdown-item" href="#/principal/categoria-joias">Joias</a>
+            <a class="dropdown-item" href="#/principal/categoria-feminino">Feminino</a>
           </base-dropdown>
           <base-dropdown tag="li">
             <template slot="title">
               <i class="fa fa-shopping-cart"></i>
               <span class="notification">{{ listCarts.length }}</span>
             </template>
-            <a class="dropdown-item" href="#/main/cart">Carrinho</a>
+            <a class="dropdown-item" href="#/principal/carrinho">Carrinho</a>
           </base-dropdown>
         </ul>
       </div>
@@ -35,7 +41,12 @@
 </template>
 <script>
 import { mapState } from 'vuex';
+import ProductMixin from '@/mixins/productMixin';
+
   export default {
+    mixins: [
+		  ProductMixin,
+	  ], 
     computed: {
       ...mapState('cartDados', ['listCarts']),
       routeName () {
@@ -45,7 +56,8 @@ import { mapState } from 'vuex';
     },
     data () {
       return {
-        activeNotifications: false
+        activeNotifications: false,
+        productSearch: null
       }
     },
     methods: {
@@ -63,6 +75,9 @@ import { mapState } from 'vuex';
       },
       hideSidebar () {
         this.$sidebar.displaySidebar(false)
+      },
+      search() {
+        this.getProduct(this.productSearch);
       }
     }
   }

@@ -9,20 +9,20 @@
 	<template slot-scope="props" slot="links">
 
 		<template>
-			<sidebar-item :link="{name: 'Dashboard', path: '/main/products', icon: 'fa fa-cubes'}"></sidebar-item>
+			<sidebar-item :link="{name: 'Todos Produtos', path: '/principal/produtos', icon: 'fa fa-cubes'}"></sidebar-item>
 		</template>
 
 		<template>
 			<sidebar-item :link="{name: 'Categorias', icon: 'fa fa-snowflake-o'}">
-				<sidebar-item :link="{name: 'Eletrônicos', path: '/main/electronics-categories', icon: 'fa fa-desktop'}"></sidebar-item>
-				<sidebar-item :link="{name: 'Homens', path: '/main/man-categories', icon: 'fa fa-male'}"></sidebar-item>
-				<sidebar-item :link="{name: 'Joias', path: '/main/jewelery-categories', icon: 'fa fa-diamond'}"></sidebar-item>
-				<sidebar-item :link="{name: 'Mulheres', path: '/main/woman-categories', icon: 'fa fa-female'}"></sidebar-item>
+				<sidebar-item :link="{name: 'Eletrônicos', path: '/principal/categoria-eletronicos', icon: 'fa fa-desktop'}"></sidebar-item>
+				<sidebar-item :link="{name: 'Masculino', path: '/principal/categoria-masculino', icon: 'fa fa-male'}"></sidebar-item>
+				<sidebar-item :link="{name: 'Joias', path: '/principal/categoria-joias', icon: 'fa fa-diamond'}"></sidebar-item>
+				<sidebar-item :link="{name: 'Feminino', path: '/principal/categoria-feminino', icon: 'fa fa-female'}"></sidebar-item>
 			</sidebar-item>
 		</template>
 
 		<template>
-			<sidebar-item :link="{name: 'Carrinho', path: '/main/cart', icon: 'fa fa-shopping-cart'}"></sidebar-item>
+			<sidebar-item :link="{name: 'Meu Carrinho', path: '/principal/carrinho', icon: 'fa fa-shopping-cart'}"></sidebar-item>
 		</template>
 
 	</template>

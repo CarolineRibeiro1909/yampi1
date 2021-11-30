@@ -15,46 +15,46 @@ const routes = [
   {
     path: '/',
     component: DashboardLayout,
-    redirect: '/main/products'
+    redirect: '/principal/produtos'
   },
   {
-    path: '/main',
+    path: '/principal',
     component: DashboardLayout,
-    redirect: '/main/products',
+    redirect: '/principal/produtos',
     children: [
       {
-        path: 'products',
-        name: 'Products',
+        path: 'produtos',
+        name: 'Produtos',
         component: Products
       },
       {
-        path: 'product-details',
-        name: 'Product Details',
+        path: 'detalhes-produto',
+        name: 'Detalhes Produto',
         component: ProductDetails
       },
       {
-        path: 'cart',
-        name: 'Cart',
+        path: 'carrinho',
+        name: 'Carrinho',
         component: Cart
       },
       {
-        path: 'electronics-categories',
+        path: 'categoria-eletronicos',
         name: 'Eletrônicos',
         component: ElectronicsCategories
       },
       {
-        path: 'man-categories',
-        name: 'Homens',
+        path: 'categoria-masculino',
+        name: 'Masculino',
         component: ManCategories
       },
       {
-        path: 'jewelery-categories',
+        path: 'categoria-joias',
         name: 'JOIAS',
         component: JeweleryCategories
       },
       {
-        path: 'woman-categories',
-        name: 'Mulheres',
+        path: 'categoria-feminino',
+        name: 'Feminino',
         component: WomanCategories
       },
     ]

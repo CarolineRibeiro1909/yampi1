@@ -5,7 +5,7 @@
   </div>
 </template>
 <script>
-  import CardCartProducts from './UserProfile/CardCartProducts.vue'
+  import CardCartProducts from './PagesComponents/CardCartProducts.vue'
 
   export default {
     components: {

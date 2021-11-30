@@ -5,12 +5,12 @@
 </template>
 <script>
 
-import ProdutoMixin from '@/mixins/produtoMixin';
-import ListProducts from './UserProfile/ListProducts.vue'
+import ProductMixin from '@/mixins/productMixin';
+import ListProducts from './PagesComponents/ListProducts.vue'
 
 export default {
 	mixins: [
-		ProdutoMixin,
+		ProductMixin,
 	],
 	components: {
 		ListProducts

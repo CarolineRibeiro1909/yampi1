@@ -11,7 +11,7 @@
   </div>
 </template>
 <script>
-  import CardProductDetails from './UserProfile/CardProductDetails.vue'
+  import CardProductDetails from './PagesComponents/CardProductDetails.vue'
 
   export default {
     components: {
