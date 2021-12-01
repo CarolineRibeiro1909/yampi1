@@ -87,31 +87,43 @@ export default {
 		removeCart(indexCart) {
 			this.removeIndexInArray(this.listCarts, indexCart);
 			this.totalCart(this.listCarts);
+			this.qtdeCart(this.listCarts);
 		},
 		removeIndexInArray(arrayObject, index) {
 			return arrayObject.splice(index, 1);
 		},
-		totalCart(array) {
+		qtdeCart(array) { // função para calcular a quantidade de itens do carrinho
+			let qtde = array.reduce((prevVal, elem) => {
+            return prevVal + Number(elem.qtde);
+          }, 0);
+		  this.$store.commit('cartDados/setQtdeCart', qtde);
+		},
+		totalCart(array) { // função para calcular o valor total do carrinho
 			this.total = array.reduce((prevVal, elem) => {
 				return prevVal + Number(elem.total);
 			}, 0);
-			parseFloat(this.total.toFixed(2));
+
+			this.total = parseFloat(this.total.toFixed(2));
+			
+			this.total = this.total.toString().replace(".", ",");
 		},
 		updatePrice(indexCart, qtde, price) {
-			let lista = this.$store.state.cartDados.listCarts;
+			let list = this.$store.state.cartDados.listCarts;
 
-			lista[indexCart].qtde = qtde; // altera o valor da quantidade
+			list[indexCart].qtde = qtde; // altera o valor da quantidade
 
 			let total = Number((qtde) * (price));
 
-			lista[indexCart].total = parseFloat(total.toFixed(2));  // altera o valor do preço
+			list[indexCart].total = parseFloat(total.toFixed(2)); // altera o valor do preço
 
-			this.$store.commit('cartDados/setListCarts', lista);
+			this.$store.commit('cartDados/setListCarts', list);
 
-			this.totalCart(lista);
+			this.totalCart(list);
+			this.qtdeCart(list);
 		},
 		resetListCarts() {
 			this.$store.dispatch('cartDados/resetListCarts');
+			this.$store.commit('cartDados/setQtdeCart', 0);
 		},
 		completedOrder() {
 			this.$toasted.show("Pedido Enviado com Sucesso !!", { 
@@ -125,6 +137,7 @@ export default {
 	},
 	mounted() {
 		this.totalCart(this.listCarts);
+		this.qtdeCart(this.listCarts);
 	},
 	watch: {
 	},

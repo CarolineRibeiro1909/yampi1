@@ -30,7 +30,7 @@
           <base-dropdown tag="li">
             <template slot="title">
               <i class="fa fa-shopping-cart"></i>
-              <span class="notification">{{ listCarts.length }}</span>
+              <span class="notification">{{ qtdeCard }}</span>
             </template>
             <a class="dropdown-item" href="#/principal/carrinho">Carrinho</a>
           </base-dropdown>
@@ -48,7 +48,7 @@ import ProductMixin from '@/mixins/productMixin';
 		  ProductMixin,
 	  ], 
     computed: {
-      ...mapState('cartDados', ['listCarts']),
+      ...mapState('cartDados', ['qtdeCard']),
       routeName () {
         const {name} = this.$route
         return this.capitalizeFirstLetter(name)

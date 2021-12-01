@@ -76,7 +76,6 @@ export default {
 		getProduct(search) {
 			serviceProduct.getAllProducts().then(response => {
 				let responseFind = response.find(elem => elem.title.trim() === search.trim());
-				console.log(responseFind);
 				if (responseFind) {
 					this.setFormProduct(responseFind);
 					this.$router.push({ path: 'detalhes-produto'});

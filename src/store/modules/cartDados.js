@@ -1,6 +1,7 @@
 const getDefaultStateCartDados = () => {
 	return {
         listCarts: [],
+		qtdeCard: 0,
 	}
 }
 
@@ -20,6 +21,9 @@ export default {
         },
 		setListCarts(state, payload) {
 			state.listCarts = payload;
+		},
+		setQtdeCart(state, payload) {
+			state.qtdeCard = payload
 		}
 	},
 	actions: {
