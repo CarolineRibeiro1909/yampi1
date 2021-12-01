@@ -1,5 +1,6 @@
 <template>
   <div class="content">
+	<h4>{{'Eletrônicos'}}</h4>
 	<div class="row justify-content-center">
 		<div class="col-md-6 ml-3">
 			<label>{{'Ordenar por:'}}</label>
