@@ -78,7 +78,7 @@ export default {
 				let responseFind = response.find(elem => elem.title.trim() === search.trim());
 				if (responseFind) {
 					this.setFormProduct(responseFind);
-					this.$router.push({ path: 'detalhes-produto'});
+					this.$router.push({ path: 'detalhes-produto'}).catch(()=>{});
 				}
 			})
 		},
