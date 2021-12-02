@@ -95,7 +95,12 @@ export default {
 				}
 			});
 			this.$store.commit('productDados/setListProducts', list);
-		}	
+		},
+		formatTotal(total) {
+			total = total.toFixed(2);
+			total = total.toString().replace(".", ",");
+			return total;
+		},	
 	},
 	watch: {
 	}

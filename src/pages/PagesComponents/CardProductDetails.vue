@@ -105,7 +105,9 @@ export default {
 			let listEqual = list.filter(element => element.id === this.id); // verifica se item já esta inserido no carrinho
 
 			if (listEqual.length <= 0) {
-				let objData = {'id': this.id, 'image': this.image, 'price': this.price, 'title': this.title, 'qtde': this.quantity,'total': (Number(this.quantity) * Number(this.price)).toFixed(2)};
+				let total = (Number(this.quantity) * Number(this.price));
+
+				let objData = {'id': this.id, 'image': this.image, 'price': this.price, 'title': this.title, 'qtde': this.quantity,'total': this.formatTotal(total)};
 				this.$store.commit('cartDados/pushListCarts', objData);
 				this.$router.push({ path: 'carrinho'});
 			} else {

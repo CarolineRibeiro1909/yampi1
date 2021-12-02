@@ -59,9 +59,11 @@
 <script>
 import Card from 'src/components/Cards/Card.vue'
 import Notification from 'src/components/NotificationPlugin/Notification.vue';
+import ProductMixin from '@/mixins/productMixin';
 
 export default {
 	mixins: [
+		ProductMixin
 	],
 	components: {
     	Card,
@@ -100,12 +102,11 @@ export default {
 		},
 		totalCart(array) { // função para calcular o valor total do carrinho
 			this.total = array.reduce((prevVal, elem) => {
-				return prevVal + Number(elem.total);
+				let teste = elem.total.toString().replace(",", ".")
+				return prevVal + parseFloat(teste)
 			}, 0);
 
-			this.total = parseFloat(this.total.toFixed(2));
-			
-			this.total = this.total.toString().replace(".", ",");
+			this.total = this.formatTotal(this.total);
 		},
 		updatePrice(indexCart, qtde, price) {
 			let list = this.$store.state.cartDados.listCarts;
@@ -114,7 +115,7 @@ export default {
 
 			let total = Number((qtde) * (price));
 
-			list[indexCart].total = parseFloat(total.toFixed(2)); // altera o valor do preço
+			list[indexCart].total = this.formatTotal(total); // altera o valor do preço
 
 			this.$store.commit('cartDados/setListCarts', list);
 
